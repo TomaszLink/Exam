@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.AspNetCore.Components.Sections;
 using Microsoft.EntityFrameworkCore;
+using WebApplication1.exceptions;
 using WebApplication1.models;
 using WebApplication1.repositorycontent;
 using Task = WebApplication1.models.Task;
@@ -19,13 +20,13 @@ public class RecordsService(Repository repo)
         Language language = this.repo.languages.Find(request.LanguageId);
         if (language == null)
         {
-            throw new Exception("Language not found");
+            throw new NotFoundException("Language not found");
         }
         
         Student student = this.repo.students.Find(request.StudentId);
         if (student == null)
         {
-            throw new Exception("Student not found");
+            throw new NotFoundException("Student not found");
         }
 
          Task task = findOrCreateTask(request.Task);
@@ -57,7 +58,7 @@ public class RecordsService(Repository repo)
         
         if (taskRequest.Name == null || taskRequest.Description == null)
         {
-            throw new ApplicationException("Task not found");
+            throw new NotFoundException("Task not found");
         }
 
         Task newTask = new Task()
@@ -76,7 +77,8 @@ public class RecordsService(Repository repo)
             .Include(r => r.Task)
             .Include(r => r.Student)
             .Include(r => r.Language)
-            .OrderBy(p => p.ExecutionTime)
+            .OrderByDescending(p => p.CreatedAt)
+            .ThenBy(p => p.Student.LastName)
             .ToList();
     }
 }

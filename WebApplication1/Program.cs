@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1;
+using WebApplication1.exceptions;
 using WebApplication1.models;
 using WebApplication1.repositorycontent;
 
@@ -49,9 +50,9 @@ app.MapGet("/records", () =>
             var result = RecordsService.getAllRecords();
             return Results.Ok(result);
         }
-        catch (Exception ex)
+        catch (NotFoundException ex)
         {
-            return Results.NotFound();
+            return Results.NotFound(ex.Message);
         }
     })
     .WithName("AllRecords")

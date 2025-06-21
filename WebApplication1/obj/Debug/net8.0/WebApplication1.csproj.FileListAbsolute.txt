@@ -167,3 +167,4 @@ C:\Users\s22920\RiderProjects\WebApplication1\WebApplication1\obj\Debug\net8.0\r
 C:\Users\s22920\RiderProjects\WebApplication1\WebApplication1\obj\Debug\net8.0\WebApplication1.pdb
 C:\Users\s22920\RiderProjects\WebApplication1\WebApplication1\obj\Debug\net8.0\WebApplication1.genruntimeconfig.cache
 C:\Users\s22920\RiderProjects\WebApplication1\WebApplication1\obj\Debug\net8.0\ref\WebApplication1.dll
+C:\Users\s22920\RiderProjects\WebApplication1\WebApplication1\obj\Debug\net8.0\WebApplication1.sourcelink.json
